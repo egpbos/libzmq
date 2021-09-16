@@ -115,7 +115,9 @@ if(NOT WIN32)
     test_stream_exceeds_buffer
     test_router_mandatory_hwm
     test_use_fd
-    test_zmq_poll_fd)
+    test_zmq_poll_fd
+    test_zmq_ppoll_fd
+    test_zmq_ppoll_signals)
   if(HAVE_FORK)
     list(APPEND tests test_fork)
   endif()

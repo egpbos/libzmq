@@ -889,6 +889,7 @@ test_apps += \
 	tests/test_reqrep_ipc \
 	tests/test_use_fd \
 	tests/test_zmq_poll_fd \
+	tests/test_zmq_ppoll_fd \
 	tests/test_timeo \
 	tests/test_filter_ipc
 
@@ -928,7 +929,17 @@ tests_test_zmq_poll_fd_SOURCES = tests/test_zmq_poll_fd.cpp
 tests_test_zmq_poll_fd_LDADD = ${TESTUTIL_LIBS} src/libzmq.la
 tests_test_zmq_poll_fd_CPPFLAGS = ${TESTUTIL_CPPFLAGS}
 
+tests_test_zmq_ppoll_fd_SOURCES = tests/test_zmq_ppoll_fd.cpp
+tests_test_zmq_ppoll_fd_LDADD = ${TESTUTIL_LIBS} src/libzmq.la
+tests_test_zmq_ppoll_fd_CPPFLAGS = ${TESTUTIL_CPPFLAGS}
+
 if HAVE_FORK
+test_apps += tests/test_zmq_ppoll_signals
+
+tests_test_zmq_ppoll_signals_SOURCES = tests/test_zmq_ppoll_signals.cpp
+tests_test_zmq_ppoll_signals_LDADD = ${TESTUTIL_LIBS} src/libzmq.la
+tests_test_zmq_ppoll_signals_CPPFLAGS = ${TESTUTIL_CPPFLAGS}
+
 if !VALGRIND_ENABLED
 test_apps += tests/test_fork
 
